@@ -4,13 +4,13 @@ const router = express.Router();
 const UserController= require("../controllers/userController")
 const BookController= require("../controllers/bookController")
 const commonMW = require ("../middlewares/commonMiddlewares")
-
+const controller = require ("../controllers/allController")
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
 })
 
 
-
+router.get("/getGlobalMiddleware", controller.handler )
 
 router.post("/createBook", BookController.createBook  )
 
@@ -48,7 +48,7 @@ router.post("/createBook", BookController.createBook  )
 
 
 
-router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
+router.get("/basicRoute",  UserController.basicCode)
 
 
 
